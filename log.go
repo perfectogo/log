@@ -5,7 +5,6 @@ import (
 	"io"
 	"os"
 	"runtime"
-	"strings"
 	"sync"
 	"sync/atomic"
 	"time"
@@ -152,5 +151,5 @@ func (l *Logger) Output(color string, err error, calldepth int, s string) error 
 }
 
 func Fn(uintptr) string {
-	return strings.Split(fmt.Sprintf("%s ", runtime.FuncForPC(pc).Name()), ".")[len(strings.Split(fmt.Sprintf("%s ", runtime.FuncForPC(pc).Name()), "."))-1]
+	return fmt.Sprintf("%s ", runtime.FuncForPC(pc).Name())
 }
